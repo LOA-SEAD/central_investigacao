@@ -1,0 +1,1569 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 3</name>
+    <events>
+        <variable name="zoom2" type="number">1</variable>
+        <variable name="planoAtual2" type="number">0</variable>
+        <variable comment="0 desbloqueado, 1 bloqueado" name="bloqueado" type="number">0</variable>
+        <variable name="typingSpeed" type="number">0.01</variable>
+        <variable name="fluxo" type="number">0</variable>
+        <variable name="fluxoAUX" type="number">0</variable>
+        <event-group collapsed="1" description="" title="Inicializacao">
+            <sub-events>
+                <comment>Pin nos Objetos ao cenario, e ajusto do zoom, e do planoAtual(como essa nao sera a primeira cena reaproveitaremos essas variaveis)</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="-2" name="On start of layout" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">zoom</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">fluxo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="2" name="Setup text-typing" type="C2_TextAtendente">
+                            <param id="0" name="Timeline">TimeLine</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Plano1BG">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Plano2BG">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Item1">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Item2">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Item3">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Item4">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Atendente">
+                            <param id="0" name="Pin to">C2_Plano3BG</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_TextAtendente">
+                            <param id="0" name="Pin to">C2_Fala</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_OpcaoNAO">
+                            <param id="0" name="Pin to">C2_Fala</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_OpcaoSIM">
+                            <param id="0" name="Pin to">C2_Fala</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_Fingerprint">
+                            <param id="0" name="Pin to">C2_Folheto</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_TextAchievement">
+                            <param id="0" name="Pin to">C2_AchievementFundo</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" type="C2_TextAchievementCorpo">
+                            <param id="0" name="Pin to">C2_AchievementFundo</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" title="ZOOMS">
+            <sub-events>
+                <event-group collapsed="1" description="plano1 para plano2" inactive="1" title="ZoomINplano2">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">1.50</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X + 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y + 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">1.50</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1.50</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINplano2&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="plano2 para plano1" inactive="1" title="ZoomOUTplano2">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X - 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y - 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTplano2&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="plan2 para plano3" inactive="1" title="ZoomINplano3">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X - 6.64</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y + 1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINplano3&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="plano3 para plano2" inactive="1" title="ZoomOUTplano3">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1.5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X + 6.64</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y - 1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">1.5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1.5</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTplano3&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom quando o folheto aparece na tela pela primeira vez" inactive="1" title="ZoomINfolhetoApr">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X + 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y + 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1.30</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINfolhetoApr&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom out quando o folheto for sair da tela" inactive="1" title="ZoomOUTfolhetoApr">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X - 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y - 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTfolhetoApr&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom quando o folheto aparece na tela pela primeira vez" inactive="1" title="ZoomINfolhetoFPesq">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">C2_Folheto.X + 0.90</param>
+                                    <param id="1" name="Y">C2_Folheto.Y - 1.15</param>
+                                </action>
+                                <action disabled="1" id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X + 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y + 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">2.0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINfolhetoFPesq&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom out quando o folheto for sair da tela" inactive="1" title="ZoomOUTfolhetoFPesq">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">C2_Folheto.X - 0.90</param>
+                                    <param id="1" name="Y">C2_Folheto.Y + 1.15</param>
+                                </action>
+                                <action disabled="1" id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X - 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y - 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1.30</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTfolhetoFPesq&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom quando o folheto aparece na tela pela primeira vez" inactive="1" title="ZoomINfolhetoFPdir">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">C2_Folheto.X - 0.90</param>
+                                    <param id="1" name="Y">C2_Folheto.Y - 1.15</param>
+                                </action>
+                                <action disabled="1" id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X + 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y + 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">2.0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINfolhetoFPdir&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group collapsed="1" description="zoom out quando o folheto for sair da tela" inactive="1" title="ZoomOUTfolhetoFPdir">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">C2_Folheto.X + 0.90</param>
+                                    <param id="1" name="Y">C2_Folheto.Y + 1.15</param>
+                                </action>
+                                <action disabled="1" id="-3" name="Set position" type="C2_Plano3BG">
+                                    <param id="0" name="X">C2_Plano3BG.X - 2.65</param>
+                                    <param id="1" name="Y">C2_Plano3BG.Y - 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">1.30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">1.30</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTfolhetoFPdir&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="zoom quando o folheto aparece na tela pela primeira vez" inactive="1" title="ZoomINfolhetoFPesq2">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">3.5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">C2_Folheto.X + 0.5</param>
+                                    <param id="1" name="Y">C2_Folheto.Y - 0.5</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">3.5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">3.5</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINfolhetoFPesq2&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="zoom out quando o folheto for sair da tela" inactive="1" title="ZoomOUTfolhetoFPesq2">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" type="System">
+                                    <param id="0" name="Interval (seconds)">0.01</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-1" name="Every tick" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-20" name="Set layout scale" type="System">
+                                    <param id="0" name="Scale">zoom</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">2.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">zoom</param>
+                                    <param id="1" name="Value">2.0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomOUTfolhetoFPesq2&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="" title="Navegacao Planos">
+            <sub-events>
+                <comment>Plano 1 querendo ir para o 2</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano2&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano3&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano3&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Plano 2 querendo voltar para o 1</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">40 (Down arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano2&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano3&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano3&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Plano 2 querendo ir para o 3</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano3&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano2&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano2&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Plano 3 querendo voltar para o 2</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">40 (Down arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano3&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano2&quot;</param>
+                        </condition>
+                        <condition id="-15" inverted="1" name="Is group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomINplano2&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">planoAtual</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;ZoomOUTplano3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="Interação entre mouse e objetos" title="Mouse-Objetos">
+            <sub-events>
+                <event-group collapsed="1" description="" title="Mouse Sobre Objeto">
+                    <sub-events>
+                        <comment>Mouse Sobre um Item</comment>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set speed" type="C2_Item1">
+                                    <param id="0" name="Speed">5</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item2</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set speed" type="C2_Item2">
+                                    <param id="0" name="Speed">5</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item3</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set speed" type="C2_Item3">
+                                    <param id="0" name="Speed">5</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item4</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set speed" type="C2_Item4">
+                                    <param id="0" name="Speed">5</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Atendente</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Mouse não está sobre um Item</comment>
+                        <event-block>
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item1</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item2</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item3</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Item4</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                    <param id="0" name="Object">C2_Atendente</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set speed" type="C2_Item1">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action id="5" name="Set frame" type="C2_Item1">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="6" name="Set speed" type="C2_Item2">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action id="5" name="Set frame" type="C2_Item2">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="6" name="Set speed" type="C2_Item3">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action id="5" name="Set frame" type="C2_Item3">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="6" name="Set speed" type="C2_Item4">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action id="5" name="Set frame" type="C2_Item4">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="On Click -&gt; Desativa grupos necessarios e Ativa evento Correspondente" title="Mouse Clique">
+                    <sub-events>
+                        <comment>Clique Atendente - fluxo entra 0 e sai 1</comment>
+                        <event-block>
+                            <conditions>
+                                <condition id="6" name="On object clicked" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                    <param id="2" name="Object clicked">C2_Atendente</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Navegacao Planos&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Mouse Sobre Objeto&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Introdução Atendente&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Clique Item 1 - fluxo entra 1 e sai 2</comment>
+                        <event-block>
+                            <conditions>
+                                <condition id="6" name="On object clicked" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                    <param id="2" name="Object clicked">C2_Item1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">planoAtual</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">fluxo</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="C2_Item1" />
+                                <action id="0" name="Set cursor style" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Navegacao Planos&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Mouse Sobre Objeto&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ITEM 1&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" title="Eventos">
+            <sub-events>
+                <event-group collapsed="1" description="" inactive="1" title="Introdução Atendente">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Fala">
+                                    <param id="0" name="X">C2_Atendente.X + 10</param>
+                                    <param id="1" name="Y">C2_Atendente.Y + 10</param>
+                                </action>
+                                <action id="3" name="Type text" type="C2_TextAtendente">
+                                    <param id="0" name="Text">&quot;Olá! Nunca te vi por aqui. Já possui cadastro para retirar livros?&quot;</param>
+                                    <param id="1" name="Speed">typingSpeed</param>
+                                </action>
+                                <action id="-16" name="Wait" type="System">
+                                    <param id="0" name="Seconds">typingSpeed*len(&quot;Olá! Nunca te vi por aqui. Já possui cadastro para retirar livros?&quot;)</param>
+                                </action>
+                                <action id="-15" name="Set visible" type="C2_OpcaoNAO">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" type="C2_OpcaoSIM">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;MOUSE OPCOES&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-group collapsed="1" description="" inactive="1" title="MOUSE OPCOES">
+                            <sub-events>
+                                <comment>Mouse sobre Opcao</comment>
+                                <event-block any="1">
+                                    <conditions>
+                                        <condition id="7" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_OpcaoSIM</param>
+                                        </condition>
+                                        <condition id="7" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_OpcaoNAO</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_OpcaoSIM</param>
+                                        </condition>
+                                        <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_OpcaoNAO</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Clique sobre Opcao</comment>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="6" name="On object clicked" type="Mouse">
+                                            <param id="0" name="Mouse button">0</param>
+                                            <param id="1" name="Click type">0</param>
+                                            <param id="2" name="Object clicked">C2_OpcaoSIM</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">0</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" type="C2_OpcaoSIM" />
+                                        <action id="-9" name="Destroy" type="C2_OpcaoNAO" />
+                                        <action id="3" name="Type text" type="C2_TextAtendente">
+                                            <param id="0" name="Text">&quot;Então, deveria vir mais vezes aqui. Sabe, os livros não são lidos sozinhos, você tem que vir chamá-los para passear. Pode entrar, não precisa ter medo.&quot;</param>
+                                            <param id="1" name="Speed">typingSpeed</param>
+                                        </action>
+                                        <action id="-16" name="Wait" type="System">
+                                            <param id="0" name="Seconds">typingSpeed*len(&quot;Então, deveria vir mais vezes aqui. Sabe, os livros não são lidos sozinhos, você tem que vir chamá-los para passear. Pode entrar, não precisa ter medo.&quot;) + 1</param>
+                                        </action>
+                                        <action id="0" name="Set text" type="C2_TextAtendente">
+                                            <param id="0" name="Text">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" type="C2_Fala">
+                                            <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-2" name="Set Y" type="C2_Fala">
+                                            <param id="0" name="Y">700</param>
+                                        </action>
+                                        <action id="-9" name="Set value" type="System">
+                                            <param id="0" name="Variable">bloqueado</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Navegacao Planos&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Mouse Sobre Objeto&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Introdução Atendente&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;MOUSE OPCOES&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="6" name="On object clicked" type="Mouse">
+                                            <param id="0" name="Mouse button">0</param>
+                                            <param id="1" name="Click type">0</param>
+                                            <param id="2" name="Object clicked">C2_OpcaoNAO</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">0</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" type="C2_OpcaoSIM" />
+                                        <action id="-9" name="Destroy" type="C2_OpcaoNAO" />
+                                        <action id="3" name="Type text" type="C2_TextAtendente">
+                                            <param id="0" name="Text">&quot;Nossa, essa juventude está mesmo perdida... Bom, se você for levar algum livro daqui pra casa, precisará voltar aqui para me passar suas informações. Não quero que mais nenhum, NENHUM livro suma de nossos cuidados.&quot;</param>
+                                            <param id="1" name="Speed">typingSpeed</param>
+                                        </action>
+                                        <action id="-16" name="Wait" type="System">
+                                            <param id="0" name="Seconds">typingSpeed*len(&quot;Nossa, essa juventude está mesmo perdida... Bom, se você for levar algum livro daqui pra casa, precisará voltar aqui para me passar suas informações. Não quero que mais nenhum, NENHUM livro suma de nossos cuidados.&quot;) + 1</param>
+                                        </action>
+                                        <action id="0" name="Set text" type="C2_TextAtendente">
+                                            <param id="0" name="Text">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" type="C2_Fala">
+                                            <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-2" name="Set Y" type="C2_Fala">
+                                            <param id="0" name="Y">700</param>
+                                        </action>
+                                        <action id="-9" name="Set value" type="System">
+                                            <param id="0" name="Variable">bloqueado</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Navegacao Planos&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Mouse Sobre Objeto&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;Introdução Atendente&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;MOUSE OPCOES&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-group>
+                <event-group description="Quando o item 1 é clicado" inactive="1" title="ITEM 1">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">bloqueado</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_Folheto">
+                                    <param id="0" name="X">WindowWidth/2</param>
+                                    <param id="1" name="Y">WindowHeight/2</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;ZoomINfolhetoApr&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                                <action id="-16" name="Wait" type="System">
+                                    <param id="0" name="Seconds">1.5</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Mouse Fingerprints&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-group description="" inactive="1" title="Mouse Fingerprints">
+                            <sub-events>
+                                <comment>Sobre Objeto</comment>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="7" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_Fingerprint</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                                            <param id="0" name="Object">C2_Fingerprint</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set cursor style" type="Mouse">
+                                            <param id="0" name="Cursor style">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Segundo click na fingerprint</comment>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" type="System">
+                                            <param id="0" name="Variable">fluxoAUX</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block>
+                                            <conditions>
+                                                <condition id="6" name="On object clicked" type="Mouse">
+                                                    <param id="0" name="Mouse button">0</param>
+                                                    <param id="1" name="Click type">0</param>
+                                                    <param id="2" name="Object clicked">C2_Fingerprint</param>
+                                                </condition>
+                                                <condition id="-8" name="Is boolean instance variable set" type="C2_Fingerprint">
+                                                    <param id="0" name="Instance variable">Esquerda</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-12" name="Set group active" type="System">
+                                                    <param id="0" name="Group name">&quot;Achievement1&quot;</param>
+                                                    <param id="1" name="State">1</param>
+                                                </action>
+                                                <action id="-12" name="Set group active" type="System">
+                                                    <param id="0" name="Group name">&quot;ZoomINfolhetoFPesq2&quot;</param>
+                                                    <param id="1" name="State">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block>
+                                            <conditions>
+                                                <condition id="6" name="On object clicked" type="Mouse">
+                                                    <param id="0" name="Mouse button">0</param>
+                                                    <param id="1" name="Click type">0</param>
+                                                    <param id="2" name="Object clicked">C2_Fingerprint</param>
+                                                </condition>
+                                                <condition id="-8" inverted="1" name="Is boolean instance variable set" type="C2_Fingerprint">
+                                                    <param id="0" name="Instance variable">Esquerda</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-12" name="Set group active" type="System">
+                                                    <param id="0" name="Group name">&quot;Achievement1&quot;</param>
+                                                    <param id="1" name="State">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <comment>On click fingerprint priemeira vez</comment>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">fluxoAUX</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="6" name="On object clicked" type="Mouse">
+                                            <param id="0" name="Mouse button">0</param>
+                                            <param id="1" name="Click type">0</param>
+                                            <param id="2" name="Object clicked">C2_Fingerprint</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" type="C2_Fingerprint">
+                                            <param id="0" name="Instance variable">Esquerda</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" type="System">
+                                            <param id="0" name="Variable">fluxoAUX</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;ZoomINfolhetoFPesq&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="6" name="On object clicked" type="Mouse">
+                                            <param id="0" name="Mouse button">0</param>
+                                            <param id="1" name="Click type">0</param>
+                                            <param id="2" name="Object clicked">C2_Fingerprint</param>
+                                        </condition>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" type="C2_Fingerprint">
+                                            <param id="0" name="Instance variable">Esquerda</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" type="System">
+                                            <param id="0" name="Variable">fluxoAUX</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" type="System">
+                                            <param id="0" name="Group name">&quot;ZoomINfolhetoFPdir&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="mostra os achievements na tela" title="Achievements">
+            <sub-events>
+                <event-group collapsed="1" description="" inactive="1" title="Achievement1">
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" type="C2_TextAchievement">
+                                    <param id="0" name="Text">&quot;Achievement 1&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" type="C2_TextAchievementCorpo">
+                                    <param id="0" name="Text">&quot;Impressões Digitais&quot;</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_AchievementFundo">
+                                    <param id="0" name="X">WindowWidth/2</param>
+                                    <param id="1" name="Y">WindowHeight - (C2_AchievementFundo.Height + 5)</param>
+                                </action>
+                                <action id="-16" name="Wait" type="System">
+                                    <param id="0" name="Seconds">3</param>
+                                </action>
+                                <action id="-3" name="Set position" type="C2_AchievementFundo">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Y">800</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Achievement1&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="" title="DEBUG">
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" type="C2_DebugText">
+                            <param id="0" name="Text">&quot;PLANO: &quot; &amp; planoAtual &amp; newline &amp; &quot;FPS: &quot; &amp; fps &amp; &quot; (&quot; &amp; renderer &amp; &quot;)&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

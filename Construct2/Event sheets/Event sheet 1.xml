@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable comment="Liga e desliga o som" name="SoundFlag" type="number">1</variable>
+        <variable comment="codinome do jogador" name="codinome" type="text"></variable>
+        <variable comment="nome do jogador" name="nome" type="text"></variable>
+        <variable name="jogador" type="number">0</variable>
+        <event-group description="" title="INICIALIZACOES">
+            <sub-events>
+                <comment>Alinhando os Objetos com a Tela</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="-2" name="On start of layout" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pin" disabled="1" id="0" name="Pin to object" type="CINT_TextDadosTitulo">
+                            <param id="0" name="Pin to">CINT_Dados</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" disabled="1" id="0" name="Pin to object" type="CINT_TextPergaminho">
+                            <param id="0" name="Pin to">CINT_Pergaminho</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action disabled="1" id="-1" name="Set X" type="CINT_TextTitulo">
+                            <param id="0" name="X">(WindowWidth/2) - (CINT_TextTitulo.Width/2)</param>
+                        </action>
+                        <action disabled="1" id="-2" name="Set Y" type="CINT_Pergaminho">
+                            <param id="0" name="Y">(CINT_TextTitulo.Y + CINT_TextTitulo.Height) + ((480 - (CINT_TextTitulo.Y + CINT_TextTitulo.Height)) - CINT_Pergaminho.Height)/2</param>
+                        </action>
+                        <action disabled="1" id="-2" name="Set Y" type="CINT_Dados">
+                            <param id="0" name="Y">CINT_Pergaminho.Y</param>
+                        </action>
+                        <action id="7" name="Play (by name)" type="C1_Audio">
+                            <param id="0" name="Folder">1</param>
+                            <param id="1" name="Audio file name">&quot;sndPort&quot;</param>
+                            <param id="3" name="Loop">1</param>
+                            <param id="2" name="Tag (optional)">&quot;somInicio&quot;</param>
+                        </action>
+                        <action id="3" name="Set volume" type="C1_Audio">
+                            <param id="0" name="Tag">&quot;somInicio&quot;</param>
+                            <param id="1" name="dB">-10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-group description="" title="Habilita/Desabilita Som" />
+            </sub-events>
+        </event-group>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">CINT_Sprite</param>
+                </condition>
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">SoundFlag</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set volume" type="C1_Audio">
+                    <param id="0" name="Tag">&quot;somInicio&quot;</param>
+                    <param id="1" name="dB">-10</param>
+                </action>
+                <action id="4" name="Set animation" type="CINT_Sprite">
+                    <param id="0" name="Animation">&quot;Enabled&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">SoundFlag</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">CINT_Sprite</param>
+                </condition>
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">SoundFlag</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">SoundFlag</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="3" name="Set volume" type="C1_Audio">
+                    <param id="0" name="Tag">&quot;somInicio&quot;</param>
+                    <param id="1" name="dB">-100</param>
+                </action>
+                <action id="4" name="Set animation" type="CINT_Sprite">
+                    <param id="0" name="Animation">&quot;Disabled&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On clicked" type="CINT_Button" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">nome</param>
+                    <param id="1" name="Value">CINT_TextBox.Text</param>
+                </action>
+                <action id="-25" name="Go to layout (by name)" type="System">
+                    <param id="0" name="Layout">&quot;Layout 2&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">CINT_setaDireita</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">jogador</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">jogador</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">19</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">jogador</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">CINT_setaEsquerda</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">jogador</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">jogador</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" type="System">
+                            <param id="0" name="Variable">jogador</param>
+                            <param id="1" name="Value">18</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="CINT_jogador">
+                    <param id="0" name="Frame number">jogador</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">CINT_setaDireita</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" type="Mouse">
+                    <param id="0" name="Cursor style">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">CINT_setaEsquerda</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" type="Mouse">
+                    <param id="0" name="Cursor style">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">CINT_setaDireita</param>
+                </condition>
+                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">CINT_setaEsquerda</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" type="Mouse">
+                    <param id="0" name="Cursor style">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
